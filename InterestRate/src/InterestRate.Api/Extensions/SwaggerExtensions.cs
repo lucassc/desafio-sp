@@ -5,7 +5,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 
-namespace TaxaJuros.Api.Extensions
+namespace InterestRate.Api.Extensions
 {
     public static class SwaggerExtensions
     {

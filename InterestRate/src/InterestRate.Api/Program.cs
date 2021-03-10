@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace TaxaJuros.Api
+namespace InterestRate.Api
 {
     public class Program
     {
