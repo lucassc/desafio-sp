@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
 
 namespace InterestRate.Api
 {
@@ -9,9 +10,11 @@ namespace InterestRate.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
+                .ConfigureServices((hostContect, _) =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture(hostContect.Configuration["Culture"]);
+                    CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.CreateSpecificCulture(hostContect.Configuration["Culture"]);
                 });
     }
 }

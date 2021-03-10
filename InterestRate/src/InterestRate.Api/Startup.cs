@@ -1,8 +1,8 @@
+using InterestRate.Api.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using InterestRate.Api.Extensions;
 
 namespace InterestRate.Api
 {

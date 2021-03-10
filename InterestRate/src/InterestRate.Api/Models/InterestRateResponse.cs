@@ -7,6 +7,6 @@
         public decimal Rate { get; }
 
         public static explicit operator InterestRateResponse(decimal rate) =>
-            new InterestRateResponse(rate);
+            new(rate);
     }
 }

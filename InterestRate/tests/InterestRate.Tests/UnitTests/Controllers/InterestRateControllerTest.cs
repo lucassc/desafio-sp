@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Xunit;
 
-namespace InterestRate.Tests.Controllers
+namespace InterestRate.Tests.UnitTests.Controllers
 {
     public class InterestRateControllerTest
     {
@@ -21,7 +21,7 @@ namespace InterestRate.Tests.Controllers
 
             result.Should().NotBeNull();
             result.StatusCode.Should().Be((int)HttpStatusCode.OK);
-            var resultValue = (InterestRateResponse)result.Value;
+            var resultValue = result.Value.As<InterestRateResponse>();
             resultValue.Should().NotBeNull();
             resultValue.Rate.Should().Be(InterestRates.MainInterestRate);
         }
