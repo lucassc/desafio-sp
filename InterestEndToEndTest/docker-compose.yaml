@@ -1,0 +1,17 @@
+version: "2"
+services:
+  interest-e2e-test:
+    image: interest-e2e-test:latest
+    depends_on:
+      - interest-calc
+    environment:
+      - INTEREST_CALC_URL=http://interest-calc:80/v1/interest-calc
+  interest-calc:
+    image: interest-calc:latest
+    depends_on:
+      - interest-rate
+    environment:
+      - Urls__InterestRateQueryUrl=http://interest-rate:80/v1/interest-rate
+  interest-rate:
+    image: interest-rate:latest
+  

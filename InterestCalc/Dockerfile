@@ -10,7 +10,7 @@ RUN dotnet test
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
 
-COPY src/InterestRate.Api/. .
+COPY src/InterestCalc.Api/. .
 RUN dotnet restore
 
 RUN dotnet publish -c release -o /out
@@ -18,6 +18,6 @@ RUN dotnet publish -c release -o /out
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build /out .
-ENTRYPOINT ["dotnet", "InterestRate.Api.dll"]
+ENTRYPOINT ["dotnet", "InterestCalc.Api.dll"]
 EXPOSE 80
 EXPOSE 443

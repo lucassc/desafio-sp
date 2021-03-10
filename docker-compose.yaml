@@ -1,0 +1,13 @@
+version: "2"
+services:
+  interest-calc:
+    image: interest-calc:latest
+    depends_on:
+      - interest-rate
+    ports:
+      - 8002:80
+    environment:
+      - Urls__InterestRateQueryUrl=http://interest-rate:80/v1/interest-rate
+  interest-rate:
+    image: interest-rate:latest
+  
