@@ -21,6 +21,7 @@ namespace InterestCalc.Api
                 .AddDomainDependencies()
                 .AddInfrastructureDependencies(_configuration)
                 .AddSwaggerGen()
+                .AddMemoryCache()
                 .AddControllers(options => options.Filters.Add(typeof(ExceptionFilter)));
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

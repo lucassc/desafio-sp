@@ -13,15 +13,18 @@ namespace InterestCalc.Api.IoC
         public static IServiceCollection AddInfrastructureDependencies(this IServiceCollection services, IConfiguration configuration) =>
             services
                 .AddConfigurations(configuration)
-                .AddHttpServices();
+                .AddHttpServices(configuration);
 
         private static IServiceCollection AddConfigurations(this IServiceCollection services, IConfiguration configuration) =>
             services
                 .AddSingleton(configuration.GetSection(UrlsConfig.ConfigSectionName).Get<UrlsConfig>());
 
-        private static IServiceCollection AddHttpServices(this IServiceCollection services) =>
+        private static IServiceCollection AddHttpServices(this IServiceCollection services, IConfiguration configuration) =>
             services
                 .AddScoped<IHttpRequestService, HttpRequestService>()
-                .AddScoped<IInterestRateService, InterestRateService>();
+                .AddScoped(typeof(IInterestRateService),
+                           configuration.GetValue<bool>("CacheInterestRate")
+                                ? typeof(InterestRateCachedService)
+                                : typeof(InterestRateService));
     }
 }

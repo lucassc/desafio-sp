@@ -18,9 +18,8 @@ namespace InterestCalc.Api.Infra.HttpRequests.InterestRate
             _urlsConfig = urlsConfig;
         }
 
-        public async Task<decimal> GetInterestRate()
+        public virtual async Task<decimal> GetInterestRate()
         {
-            //add memory cache?
             var response = await _httpRequestService.GetJsonAsync<InterestRateRespose>(_urlsConfig.InterestRateQueryUrl);
             return response.Rate;
         }
